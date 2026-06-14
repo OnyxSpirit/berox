@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-berox-50: #f0f9ff;
+  --color-berox-100: #e0f2fe;
+  --color-berox-200: #bae6fd;
+  --color-berox-300: #7dd3fc;
+  --color-berox-400: #38bdf8;
+  --color-berox-500: #0ea5e9;
+  --color-berox-600: #0284c7;
+  --color-berox-700: #0369a1;
+  --color-berox-800: #075985;
+  --color-berox-900: #0c4a6e;
+  --color-berox-950: #082f49;
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+@keyframes blob {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+:root {
+  --animate-blob: blob 7s infinite;
+}
