@@ -19,7 +19,7 @@ const CEOSection: React.FC = () => {
             <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/5] bg-slate-800">
                {/* Image placeholder professionnelle */}
               <img 
-                src="@/src/assets/images/pdg.png" 
+                src="@/public/pdg.png" 
                 alt="Roberto Da Silva, CEO" 
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
