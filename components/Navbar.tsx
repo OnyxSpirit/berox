@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0 flex items-center space-x-2">
             <img
-              src="src/assets/images/berox.png" 
+              src="/berox.png" 
               alt="BEROX Logo" 
               className="w-[150px] mt-3"
             />
