@@ -1,7 +1,66 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Contact: React.FC = () => {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [service, setService] = useState('Design 3D & Architecture');
+  const [message, setMessage] = useState('');
+  
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Handle form submission logic here
+    
+    
+
+    try {
+      // Utilisation de Formspree pour envoyer l'email directement à moraisrobertodasilva@gmail.com
+      // Note: Pour une mise en production réelle, créez un compte sur formspree.io et remplacez par votre endpoint ID
+      const response = await fetch('https://formspree.io/f/mdavbogy', {
+        method: 'POST',
+        body: JSON.stringify({
+          name,
+          email,
+          service,
+          message
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        
+        toast.success('Message envoyé avec succès ! Nous vous contacterons bientôt.');
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setService('Design 3D & Architecture');
+        setMessage('');
+      } else {
+        
+        toast.error('Une erreur est survenue. Veuillez réessayer.');
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setService('Design 3D & Architecture');
+        setMessage('');
+      }
+    } catch (err) {
+      // On simule un succès pour la démo si l'endpoint n'est pas encore configuré
+      setTimeout(() => toast.error('Une erreur est survenue. Veuillez réessayer.'), 1500);
+      // Reset form fields
+      setName('');
+      setEmail('');
+      setService('Design 3D & Architecture');
+      setMessage('');
+    }
+  };
   return (
     <section id="contact" className="py-24 bg-slate-900 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,20 +90,20 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <form className="glass-card p-8 rounded-2xl" onSubmit={(e) => e.preventDefault()}>
+          <form className="glass-card p-8 rounded-2xl" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-sm font-medium text-slate-400 mb-2">Nom</label>
-                <input type="text" className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-berox-500 transition-colors" placeholder="Votre nom" />
+                <input name="name" type="text" className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-berox-500 transition-colors" placeholder="Votre nom" value={name} onChange={(e) => setName(e.target.value)} />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-400 mb-2">Email</label>
-                <input type="email" className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-berox-500 transition-colors" placeholder="votre@email.com" />
+                <input name="email" type="email" className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-berox-500 transition-colors" placeholder="votre@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
               </div>
             </div>
             <div className="mb-6">
               <label className="block text-sm font-medium text-slate-400 mb-2">Service concerné</label>
-              <select className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-berox-500 transition-colors">
+              <select name="service" className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-berox-500 transition-colors" value={service} onChange={(e) => setService(e.target.value)}>
                 <option>Design 3D & Architecture</option>
                 <option>Développement Web</option>
                 <option>Analyse de Données</option>
@@ -53,15 +112,18 @@ const Contact: React.FC = () => {
             </div>
             <div className="mb-8">
               <label className="block text-sm font-medium text-slate-400 mb-2">Message</label>
-              <textarea rows={4} className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-berox-500 transition-colors" placeholder="Dites-nous en plus sur votre projet..."></textarea>
+              <textarea name="message"
+              rows={4} className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-berox-500 transition-colors" placeholder="Dites-nous en plus sur votre projet..." value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
             </div>
-            <button className="w-full bg-berox-600 hover:bg-berox-500 text-white font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2">
+            <button type="submit" disabled={status === 'loading'} className="w-full bg-berox-600 hover:bg-berox-500 text-white font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2">
               Envoyer le message
+              
               <Send className="w-5 h-5" />
             </button>
           </form>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     </section>
   );
 };

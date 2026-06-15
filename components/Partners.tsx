@@ -53,9 +53,9 @@ const partners: Partner[] = [
     bgHover: "hover:border-purple-500/20 hover:bg-purple-950/10",
     glow: "shadow-purple-500/10",
     icon: "/kaec.png",
-    category: "SaaS;CRM & Formation",
-    description: "Déploiement et sécurisation de nos applications web. Accompagnement des jeunes entreprises.",
-    impact: "Taux de disponibilité de 99.99% garanti sur l'ensemble de nos architectures web.",
+    category: "Formation en informatique & Commerce général",
+    description: "Spécialisée dans la formation en informatique et le commerce général, Kaecnetwork met à disposition de ses clients les compétences nécessaires pour leur développement professionnel.",
+    impact: "Contribuer à l'épanouissement professionnel de nos clients grâce à une formation de qualité et adaptée à leurs besoins.",
     website: "#"
   },
   

@@ -21,7 +21,7 @@ const CEOSection: React.FC = () => {
               <img 
                 src="/pdg.png" 
                 alt="Roberto Da Silva, CEO" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover transition-all duration-700"
               />
               {/*
               <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent">
@@ -69,7 +69,7 @@ const CEOSection: React.FC = () => {
                   <Award className="w-6 h-6 text-berox-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">15+</div>
+                  <div className="text-2xl font-bold text-white">18+</div>
                   <div className="text-xs text-slate-500 uppercase tracking-wide">Années d'expérience</div>
                 </div>
               </div>
